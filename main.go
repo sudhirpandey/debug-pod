@@ -9,15 +9,23 @@ import (
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
 	response := os.Getenv("RESPONSE")
+
+	hostname, error := os.Hostname()
+
+	if error != nil {
+     panic(error)
+  }
+
+
 	if len(response) == 0 {
-		response = "Hello OpenShift!"
+		response = fmt.Sprintf("Hello OpenShift! from %s", hostname)
 	}
 
-        requestDump, err := httputil.DumpRequest(r, true)
-        if err != nil {
-           fmt.Println(err)
-        }
-        fmt.Println(string(requestDump))
+  requestDump, err := httputil.DumpRequest(r, true)
+  if err != nil {
+     fmt.Println(err)
+  }
+  fmt.Println(string(requestDump))
 
 	fmt.Fprintln(w, response)
 	fmt.Println("Servicing request.")
