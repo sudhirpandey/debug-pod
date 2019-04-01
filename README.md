@@ -1,4 +1,6 @@
-```Hello world debug app
+###Hello world debug app
+
+
 1) Build the binary form the code (static compile)
   ```
    go build -tags netgo
@@ -8,7 +10,6 @@
    ```
    docker build -t docker-registry-default.svc/debug-proj/go-hello .
 	 ```
-
 
 3) Push the image into regsitry (internal registry)
    ```
@@ -21,6 +22,6 @@
 	```
 
 5) Validate the pods get depployed 
-  ```
+   ```
 	oc logs go-hello-xxx 
-	```
+	 ```
